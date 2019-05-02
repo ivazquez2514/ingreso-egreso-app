@@ -14,7 +14,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 // Modulos
 import { AppRoutingModule } from './app-routing.module';
 import { DetalleComponent } from './ingreso-egreso/detalle/detalle.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Firebase
 import { AngularFireModule } from '@angular/fire';
@@ -28,6 +28,10 @@ import { environment } from 'src/environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appReducers } from './app.reducer';
+import { OrdenIngresoEgresoPipe } from './ingreso-egreso/orden-ingreso-egreso.pipe';
+
+// Gráficas
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -40,15 +44,18 @@ import { appReducers } from './app.reducer';
     FooterComponent,
     NavbarComponent,
     SidebarComponent,
-    DetalleComponent
+    DetalleComponent,
+    OrdenIngresoEgresoPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     AngularFireModule,
     AngularFirestoreModule,
     AngularFireAuthModule,
+    ChartsModule,
     AngularFireModule.initializeApp( environment.firebase ),
     StoreModule.forRoot( appReducers ),
     StoreDevtoolsModule.instrument({
