@@ -1,6 +1,6 @@
 import * as fromIngresoEgresoActions from './ingreso-egreso.actions';
 import { IngresoEgreso } from './ingreso-egreso.model';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { AppState } from '../app.reducer';
 
 export interface IngresoEgresoState {
   items: IngresoEgreso[];
@@ -9,6 +9,10 @@ export interface IngresoEgresoState {
 const estadoInicial: IngresoEgresoState = {
   items: []
 };
+
+export interface AppState extends AppState {
+  ingresoEgreso: IngresoEgresoState;
+}
 
 export function ingresoEgresoReducer( state = estadoInicial, action: fromIngresoEgresoActions.acciones ): IngresoEgresoState {
 
